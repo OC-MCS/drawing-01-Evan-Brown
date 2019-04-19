@@ -10,20 +10,40 @@ using namespace sf;
 class DrawingUI
 {
 private:
+	CircleShape colorBtn;
 
 public:
 	DrawingUI(Vector2f p)
 	{
+
 	}
 
+	//function that adds the shape
+	//takes render window and a pointer to an instance of ShapeMgr
+	//return type: void
 	void draw(RenderWindow& win, ShapeMgr *mgr)
 	{
+		if (isMouseInCanvas)
+		{
+			addShape(mousePos, whichShape, color);
+		}
 	}
 	
+	// function that checks if the mouse is in the canvas
+	// takes the mouse position vector
+	// return type: bool
 	bool isMouseInCanvas(Vector2f mousePos)
 	{
-		return false; // just to make it compile
+		if (colorBtn.getGlobalBounds().contains(mousePos))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
+
 
 };
 
